@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slide Library</title>
+<meta name="description" content="Browse and view presentations online.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="./">Slide Library</a>
+  <label class="search"><span class="sr">Search presentations</span>
+    <input id="q" type="search" placeholder="Search presentations" autocomplete="off"></label>
+</header>
+<main class="wrap">
+  <h1>Presentations <small id="count"></small></h1>
+  <div id="grid" class="grid" aria-live="polite"></div>
+  <p id="msg" class="msg" hidden></p>
+</main>
+<script src="js/app.js"></script>
+</body>
+</html>

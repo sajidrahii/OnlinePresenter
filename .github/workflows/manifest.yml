@@ -1,0 +1,32 @@
+name: Update presentations list
+on:
+  push:
+    paths: ["presentations/**"]
+permissions:
+  contents: write
+jobs:
+  manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build presentations.json (keeps your titles and descriptions)
+        run: |
+          python3 - <<'PY'
+          import json, os
+          old = {}
+          if os.path.exists("presentations.json"):
+              old = {m["file"]: m for m in json.load(open("presentations.json"))}
+          out = []
+          for f in sorted(os.listdir("presentations")):
+              if f.lower().endswith(".pptx"):
+                  m = old.get(f, {"file": f})
+                  m["size"] = os.path.getsize("presentations/" + f)
+                  out.append(m)
+          json.dump(out, open("presentations.json", "w"), indent=2)
+          PY
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add presentations.json
+          git diff --cached --quiet || (git commit -m "Update presentations list" && git push)

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Viewer · Slide Library</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="viewer">
+<header class="bar">
+  <a class="btn" href="./" aria-label="Back to library">‹ Library</a>
+  <h1 id="title">Loading…</h1>
+  <a class="btn" id="dl" download>Download</a>
+</header>
+<main id="stage" class="stage">
+  <div id="slide"></div>
+  <div id="status" class="status">Loading presentation…</div>
+</main>
+<footer class="bar ctl">
+  <button class="btn" id="prev" aria-label="Previous slide">‹</button>
+  <span id="pos" aria-live="polite">–</span>
+  <button class="btn" id="next" aria-label="Next slide">›</button>
+  <span class="grow"></span>
+  <button class="btn" id="copy">Copy link</button>
+  <button class="btn" id="fs">Fullscreen</button>
+</footer>
+<script src="js/vendor/pptx-preview.umd.js"></script>
+<script src="js/viewer.js"></script>
+</body>
+</html>
